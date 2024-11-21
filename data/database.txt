@@ -1,0 +1,53 @@
+#create database univap
+#use univap
+
+/*
+CREATE TABLE `univap`.`professores` (
+  `registro` INT NOT NULL,
+  `nomeprof` VARCHAR(50) NULL DEFAULT NULL,
+  `telefoneprof` VARCHAR(30) NULL DEFAULT NULL,
+  `idadeprof` INT NULL DEFAULT NULL,
+  `salarioprof` FLOAT NULL DEFAULT NULL,
+  PRIMARY KEY (`registro`));
+
+
+
+
+
+CREATE TABLE `univap`.`disciplinas` (
+  `codigodisc` INT NOT NULL,
+  `nomedisc` VARCHAR(50) NULL DEFAULT NULL,
+  PRIMARY KEY (`codigodisc`));
+  
+  
+  */
+  
+  
+  CREATE TABLE `univap`.`disciplinasxprofessores` (
+  `codigodisciplinanocurso` int  NOT NULL,
+  `curso` varchar (50),
+  `cargahoraria` INT,
+  `anoletivo` INT,
+  `coddisciplina` INT,
+  `codprofessor` INT,
+  PRIMARY KEY (`codigodisciplinanocurso`),
+  INDEX `fk_disciplina_idx` (`coddisciplina` ASC),
+  INDEX `fk_professor_idx` (`codprofessor` ASC),
+  CONSTRAINT `fk_disciplina`
+    FOREIGN KEY (`coddisciplina`)
+    REFERENCES `disciplinas` (`codigodisc`) -- Corrija o nome da tabela referenciada, se necessário
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_professor`
+    FOREIGN KEY (`codprofessor`)
+    REFERENCES `professores` (`registro`) -- Corrija o nome da tabela referenciada, se necessário
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION
+);
+
+
+
+
+
+
+
